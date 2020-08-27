@@ -8,6 +8,7 @@ import { Home } from '../home';
 import { Profile } from '../profile';
 import { Admin } from '../admin';
 import { Account } from '../account';
+const Read = require('../services/Read')
 
 function App() {
     const { pathname } = useLocation();  
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/account" component={Account} />
                 <Redirect from="*" to="/" />
             </Switch>
+            <Read />
         </div>
     );
 }
