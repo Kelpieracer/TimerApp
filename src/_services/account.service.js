@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper, history } from '../_helpers';
-const config = require('../config')
+const config = require('../config').default()
 
 const userSubject = new BehaviorSubject(null);
 const baseUrl = `${config.apiUrl}/accounts`;

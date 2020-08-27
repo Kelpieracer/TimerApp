@@ -58,6 +58,7 @@ function Alert({ id, fade }) {
         };
     }, [id, removeAlert]);
 
+    // TODO
     function removeAlert(alert) {
         if (fade) {
             // fade out alert
@@ -102,7 +103,7 @@ function Alert({ id, fade }) {
             <div className="m-3">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
-                        <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
+                        <a className="close" onClick={() => removeAlert(alert)} href="dummy">&times;</a>
                         <span dangerouslySetInnerHTML={{__html: alert.message}}></span>
                     </div>
                 )}

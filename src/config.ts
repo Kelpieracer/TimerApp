@@ -1,2 +1,2 @@
-const apiUrl = () => "https://localhost:44357"
+const apiUrl = () => { return { apiUrl: "https://localhost:44357" } }
 export default apiUrl
