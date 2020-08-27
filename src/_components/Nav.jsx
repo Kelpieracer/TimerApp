@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
-import { Role } from '@/_helpers';
-import { accountService } from '@/_services';
+import { Role } from '../_helpers';
+import { accountService } from '../_services';
 
 function Nav() {
     const [user, setUser] = useState({});
@@ -24,7 +24,7 @@ function Nav() {
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>
                     }
-                    <a onClick={accountService.logout} className="nav-item nav-link">Logout</a>
+                    <a onClick={accountService.logout} className="nav-item nav-link" href="dummy">Logout</a>
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />

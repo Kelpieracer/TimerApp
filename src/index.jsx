@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 import { history } from './_helpers';
 import { accountService } from './_services';
-import { App } from './app/Index';
+import { App } from './app/index.';
 
 import './styles.less';
 

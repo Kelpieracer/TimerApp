@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
-import { accountService, alertService } from '@/_services';
+import { accountService, alertService } from '../_services';
 
 function VerifyEmail({ history }) {
     const EmailStatus = {
@@ -13,10 +13,10 @@ function VerifyEmail({ history }) {
     const [emailStatus, setEmailStatus] = useState(EmailStatus.Verifying);
 
     useEffect(() => {
-        const { token } = queryString.parse(location.search);
+        const { token } = queryString.parse(window.location.search);
 
         // remove token from url to prevent http referer leakage
-        history.replace(location.pathname);
+        history.replace(window.location.pathname);
 
         accountService.verifyEmail(token)
             .then(() => {
@@ -26,7 +26,7 @@ function VerifyEmail({ history }) {
             .catch(() => {
                 setEmailStatus(EmailStatus.Failed);
             });
-    }, []);
+    }, [EmailStatus.Failed, history]);
 
     function getBody() {
         switch (emailStatus) {
@@ -34,6 +34,7 @@ function VerifyEmail({ history }) {
                 return <div>Verifying...</div>;
             case EmailStatus.Failed:
                 return <div>Verification failed, you can also verify your account using the <Link to="forgot-password">forgot password</Link> page.</div>;
+            default:
         }
     }
 

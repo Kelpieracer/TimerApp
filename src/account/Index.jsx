@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { accountService } from '@/_services';
+import { accountService } from '../_services';
 
 import { Login } from './Login';
 import { Register } from './Register';
@@ -17,7 +17,7 @@ function Account({ history, match }) {
         if (accountService.userValue) {
             history.push('/');
         }
-    }, []);
+    }, [history]);
 
     return (
         <div className="container">

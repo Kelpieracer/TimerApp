@@ -14,13 +14,16 @@
     "@types/react-redux": "^7.1.7",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.5",
+    "@types/yup": "^0.29.6",
+    "formik": "^2.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "~3.8.2"
+    "typescript": "~3.8.2",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,6 +32,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "globals": {
+      "confirm": true
+    },
+    "rules": {
+      "react-hooks/rules-of-hooks": "off",
+      "react-hooks/exhaustive-deps": "warn"
+    },
     "extends": "react-app"
   },
   "browserslist": {
