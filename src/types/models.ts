@@ -27,7 +27,8 @@ export interface IWorkItem extends ICommonResponse {
 export interface IProjectMember extends ICommonResponse {
     projectMemberId: number,
     // account: IAccountResponse,
-    shortAccount: IShortAccount,
+    account?: IShortAccount,
+    shortAccount?: IShortAccount,
     projectId: number,
     projectName: string,
 }

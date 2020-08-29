@@ -26,7 +26,10 @@ interface IRequest {
 const Project = () => {
     const { isLoading, error, data } = useQuery('readProject', () =>
         fetchWrapper.post(baseUrl, request)
-            .then((res: IRequest) => res.data)
+            .then((res: IRequest) => {
+                console.log(res)
+                return res
+            })
     )
 
     if (isLoading) return 'Loading...'
@@ -54,7 +57,7 @@ const Project = () => {
                     <Form.Label>Members</Form.Label>
                     <Form.Control as="select">
                         {project[0].projectMembers.map(member =>
-                            <option key={member.projectMemberId}>{member.shortAccount?.firstName ?? ""} {member.shortAccount?.lastName ?? ""}</option>
+                            <option key={member.projectMemberId}>{member.account?.firstName ?? ""} {member.account?.lastName ?? ""}</option>
                         )}
                     </Form.Control>
                 </Form.Group>
