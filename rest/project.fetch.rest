@@ -1,0 +1,9 @@
+
+
+POST https://localhost:44357/projects/fetch
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJuYmYiOjE1OTg3MjQwNDAsImV4cCI6MTU5ODcyNDk0MCwiaWF0IjoxNTk4NzI0MDQwfQ.kkQI50BN5OBc56UfSST3MjPltHAjInzO7t9RMKgkKe0
+
+{
+    "nameContains": ""
+}

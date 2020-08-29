@@ -1,0 +1,8 @@
+
+POST https://localhost:44357/accounts/authenticate
+Content-Type: application/json
+
+{
+    "email": "tapio@mantysalo.net",
+    "password": "my-super-secret-password"
+}

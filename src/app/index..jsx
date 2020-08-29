@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-
+import { ReactQueryDevtools } from 'react-query-devtools'
 import { Role } from '../_helpers';
 import { accountService } from '../_services';
 import { Nav, PrivateRoute, Alert } from '../_components';
@@ -8,7 +8,6 @@ import { Home } from '../home';
 import { Profile } from '../profile';
 import { Admin } from '../admin';
 import { Account } from '../account';
-const Read = require('../services/Read')
 
 function App() {
     const { pathname } = useLocation();  
@@ -31,7 +30,7 @@ function App() {
                 <Route path="/account" component={Account} />
                 <Redirect from="*" to="/" />
             </Switch>
-            <Read />
+            <ReactQueryDevtools initialIsOpen />
         </div>
     );
 }
