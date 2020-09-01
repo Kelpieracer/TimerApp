@@ -1,12 +1,13 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import config from '../config'
-import { IProject } from '../types/models'
+import { IProject } from '../models/responseModels'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { fetchWrapper } from '../_helpers';
+import { IUpdateProjectRequest } from '../models/updateRequests'
 
-const baseUrl = config().apiUrl + "/projects/fetch";
+const baseUrl = config().apiUrl + "/projects/";
 
 interface IProjectRequest {
     nameContains?: string,
@@ -15,18 +16,22 @@ interface IProjectRequest {
     fetchFullTree?: boolean
 }
 
-const request: IProjectRequest = {
-    nameContains: ""
+const emptyProject: IProject = {
+    projectId: -1,
+    name: '',
+    workItems: [],
+    projectMembers: [],
+    created: new Date(),
+    rates: [],
+    accountId: -1
 }
 
-interface IRequest {
-    data: IProject[]
-}
+const [project, setProject] = React.useState(emptyProject)
 
-const Project = () => {
+const Project = ({ projectId }: { projectId: number }) => {
     const { isLoading, error, data } = useQuery('readProject', () =>
-        fetchWrapper.post(baseUrl, request)
-            .then((res: IRequest) => {
+        fetchWrapper.post(baseUrl + "fetch", { projectIds: [projectId] })
+            .then((res: IProject[]) => {
                 console.log(res)
                 return res
             })
@@ -35,15 +40,18 @@ const Project = () => {
     if (isLoading) return 'Loading...'
     if (error) return 'An error has occurred: ' + JSON.stringify(error)
 
-    const project: IProject[] = data !== undefined ? data : []
-
+    setProject(data !== undefined ? data : [])
     const clickHander = () => {
-
     }
 
     const saveClickHandler = () => {
+        if (project !== undefined)
+            fetchWrapper.post(baseUrl + "update", { projectId: projectId, name: }: IUpdateProjectRequest)
+                .then((res: IProject[]) => {
+                    console.log(res)
+                    return res
+                })
     }
-
 
     return project && project.length > 0 ? (
         <div>

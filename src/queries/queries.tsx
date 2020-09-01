@@ -1,5 +1,5 @@
 import config from '../config'
-import { IProject, IWorkItem, IProjectMember, ITopic } from '../types/models'
+import { IProject, IWorkItem, IProjectMember, ITopic } from '../models/responseModels'
 
 const apiUrl = config().apiUrl;
 const projectUrl = `${apiUrl}/projects`
